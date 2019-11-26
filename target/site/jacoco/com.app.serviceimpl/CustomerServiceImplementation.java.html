@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerServiceImplementation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ParkingLot</a> &gt; <a href="index.source.html" class="el_package">com.app.serviceimpl</a> &gt; <span class="el_source">CustomerServiceImplementation.java</span></div><h1>CustomerServiceImplementation.java</h1><pre class="source lang-java linenums">package com.app.serviceimpl;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.app.model.Customer;
+import com.app.repository.CustomerRepository;
+import com.app.service.CustomerService;
+
+@Service
+@Transactional
+<span class="nc" id="L16">public class CustomerServiceImplementation implements CustomerService {</span>
+	
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private ReceiptServiceImpl receiptServiceImpl;
+
+	@Override
+	public Customer save(Customer customer) {		
+<span class="nc" id="L26">		return customerRepository.save(customer);</span>
+	}
+
+	
+
+	@Override
+	public Customer update(Customer customer) {
+<span class="nc" id="L33">		Customer OldcustomerInfo = customerRepository.findByCustomerId(customer.getCustomerId());</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">		if(OldcustomerInfo!= null) {</span>
+<span class="nc" id="L35">			OldcustomerInfo.getDuration().setExitTime(customer.getDuration().getExitTime());</span>
+<span class="nc" id="L36">			OldcustomerInfo.setReceiptBody(receiptServiceImpl.createReceipt(OldcustomerInfo));</span>
+		}
+		
+<span class="nc" id="L39">		return customerRepository.save(OldcustomerInfo);</span>
+		
+	}
+
+
+
+	@Override
+	public List&lt;Customer&gt; findAll() {
+		// TODO Auto-generated method stub
+<span class="nc" id="L48">		return customerRepository.findAll();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

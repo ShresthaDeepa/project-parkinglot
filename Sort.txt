@@ -1,0 +1,5 @@
+Bucket Sort
+Binary Search
+Quick Sort
+Merge Sort
+Heap Sort- Min_Heap and Max_Heap

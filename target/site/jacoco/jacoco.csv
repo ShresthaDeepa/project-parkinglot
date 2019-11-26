@@ -1,0 +1,5 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+ParkingLot,com.app.repositoryImpl,ReceiptRepositoryImpl,16,0,0,0,3,0,2,0,2,0
+ParkingLot,com.app.serviceimpl,ReceiptServiceImpl,125,0,2,0,16,0,6,0,5,0
+ParkingLot,com.app.serviceimpl,CustomerServiceImplementation,39,0,2,0,8,0,5,0,4,0
+ParkingLot,com.app.controller,RevenueController,44,41,6,4,9,9,7,3,3,2
